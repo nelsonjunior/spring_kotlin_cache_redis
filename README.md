@@ -8,4 +8,12 @@ Projeto demo de uma API com implementação de cache com redis
   - Criação docker Redis
     -- docker-compose up -d
     -- docker exec -it redis_cache redis-cli -a [pass]
+
+### Referências
+	- Spring Boot API
+		-- https://medium.com/mariano-z-lopez/painless-spring-boot-tutorial-with-maven-kotlin-mongodb-18c11a08aaae
+	- Cache
+		-- https://www.concretepage.com/spring-boot/spring-boot-redis-cache
+	- Docker
+		-- https://medium.com/@renato.groffe/docker-dica-r%C3%A1pida-criando-uma-inst%C3%A2ncia-do-redis-via-docker-compose-961c7eca5255
  
