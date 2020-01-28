@@ -7,3 +7,29 @@ services:
     command: redis-server --requirepass redis#
     ports:
       - "6379:6379"
+  postgres-db:
+    image: postgres
+    container_name: postgres_db
+    environment:
+      POSTGRES_PASSWORD: "Postgres2019!"
+    ports:
+      - "5432:5432"
+    volumes:
+      - /Users/nrsjnet/Dev/Poffer/docker/postgres/data:/var/lib/postgresql/data 
+    # networks:
+    #   - postgres-network     
+  # pgadmin-app:
+  #   image: dpage/pgadmin4
+  #   container_name: postgres_pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: "admin@gmail.com.br"
+  #     PGADMIN_DEFAULT_PASSWORD: "Postgres2019!"
+  #   ports:
+  #     - "16543:80"
+  #   depends_on:
+  #     - postgres-db
+  #   networks:
+  #     - postgres-network
+# networks: 
+#   postgres-network:
+#     driver: bridge

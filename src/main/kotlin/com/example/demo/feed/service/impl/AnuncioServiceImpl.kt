@@ -24,7 +24,7 @@ class AnuncioServiceImpl(private val anuncioRepository: AnuncioRepository) : Anu
     }
 
     @Caching(
-            put = [CachePut("anuncio", key = "#anuncio.id")],
+            put = [CachePut("anuncio", key = "#result.id")],
             evict = [CacheEvict("anuncios", allEntries = true)]
     )
     override fun adicionar(anuncio: Anuncio): Anuncio {
