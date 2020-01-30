@@ -14,20 +14,20 @@ import org.springframework.web.util.UriComponentsBuilder
 class FeedRest(private val anuncioService: AnuncioService) {
 
     @GetMapping("/anuncios")
-    fun getAllAnuncios(): MutableList<AnuncioDTO> {
-        return anuncioService.getAll().map { it.toDTO() }.toMutableList()
+    fun getAllAnuncios(): ResponseEntity<MutableList<AnuncioDTO>> {
+        return ResponseEntity.ok(anuncioService.getAll().map { it.toDTO() }.toMutableList())
     }
 
     @GetMapping("/anuncios/{id}")
-    fun getById(@PathVariable id: Long): AnuncioDTO = anuncioService.recuperarPorId(id).toDTO()
+    fun getById(@PathVariable id: Long): ResponseEntity<AnuncioDTO> = ResponseEntity.ok(anuncioService.recuperarPorId(id).toDTO())
 
     @PostMapping("/anuncios")
-    fun insert(@RequestBody anuncio: AnuncioDTO): AnuncioDTO {
-        return anuncioService.adicionar(Anuncio(Long.MIN_VALUE, anuncio.titulo, anuncio.resumo)).toDTO()
+    fun insert(@RequestBody anuncio: AnuncioDTO): ResponseEntity<AnuncioDTO> {
+        return ResponseEntity.ok(anuncioService.adicionar(Anuncio(Long.MIN_VALUE, anuncio.titulo, anuncio.resumo)).toDTO())
     }
 
     @PutMapping("/anuncios")
-    fun update(@RequestBody anuncio: AnuncioDTO): AnuncioDTO = anuncioService.alterar(Anuncio(anuncio.id, anuncio.titulo, anuncio.resumo)).toDTO()
+    fun update(@RequestBody anuncio: AnuncioDTO): ResponseEntity<AnuncioDTO> = ResponseEntity.ok(anuncioService.alterar(Anuncio(anuncio.id, anuncio.titulo, anuncio.resumo)).toDTO())
 
 
     @DeleteMapping("/anuncios/{id}")

@@ -1,0 +1,21 @@
+scalar Date
+
+extend type Query {
+    obterAnuncios: [Anuncio!]!
+}
+
+type Anuncio {
+  id: ID!
+  titulo: String!
+  resumo: String!
+  comments: [Comment!]!
+}
+
+type Comment {
+  id: ID!
+  text: String!
+  usuario: String!
+  data: String!
+}
+
+
